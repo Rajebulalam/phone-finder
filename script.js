@@ -43,3 +43,43 @@ const displaySearchResult = phones => {
     }
     
 }
+
+
+// load API for Phone Daetails
+const loadPhoneDetails = phone => {
+    const url = `https://openapi.programming-hero.com/api/phone/${phone}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayPhoneDetails(data.data));
+}
+
+// Display Phone Deatils
+const displayPhoneDetails = details =>{
+    const phoneDetails = document.getElementById('product-details');
+    phoneDetails.textContent = '';
+    const div = document.createElement('div');
+    div.innerHTML = `
+        <div class="card mb-3 py-5 px-2">
+            <img src=" ${details.image} " class="card-img-top w-50 h-50 mx-auto" alt="phone-img">
+            <div class="card-body">
+                <h5 class="card-title text-success fw-bold"> ${details.name} </h5>
+                <p class="card-text"> ${details.releaseDate? details.releaseDate : 'No Release Date Found'} </p> 
+                <span class = "fw-bold text-success"> Features : </span>
+                <p class="card-text"> <span class ="fw-bold">Storage : </span>${details.mainFeatures.storage} </p>
+                <p class="card-text"> <span class ="fw-bold">DisplaySize : </span>${details.mainFeatures.displaySize} </p>
+                <p class="card-text"> <span class ="fw-bold">ChipSet : </span>${details.mainFeatures.chipSet} </p>
+                <p class="card-text"> <span class ="fw-bold">Memory : </span>${details.mainFeatures.memory} </p>
+                <span class ="fw-bold text-success">Sensors :</span>
+                <p class="card-text"> ${details.mainFeatures.sensors} </p>
+                <span class = "fw-bold text-success"> Others : </span>
+                <p class="card-text"> <span class ="fw-bold">WLAN : </span>${details.others.WLAN} </p>
+                <p class="card-text"> <span class ="fw-bold">Bluetooth : </span>${details.others.Bluetooth} </p>
+                <p class="card-text"> <span class ="fw-bold">GPS : </span>${details.others.GPS} </p>
+                <p class="card-text"> <span class ="fw-bold">NFC : </span>${details.others.NFC} </p>
+                <p class="card-text"> <span class ="fw-bold">Radio : </span>${details.others.Radio} </p>
+                <p class="card-text"> <span class ="fw-bold">USB : </span>${details.others.USB} </p>
+            </div>
+        </div>
+    `;
+    phoneDetails.appendChild(div);
+}
