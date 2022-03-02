@@ -66,6 +66,7 @@ const loadPhoneDetails = phone => {
 // Display Phone Deatils
 const displayPhoneDetails = details =>{
     const phoneDetails = document.getElementById('product-details');
+    // Clear Data
     phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.innerHTML = `
@@ -98,7 +99,6 @@ const displayPhoneDetails = details =>{
 const toggleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
 }
-
 
 // Error
 const emptyError = document.getElementById('empty-error');
