@@ -4,6 +4,8 @@ const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
+    // Spinner Show
+    toggleSpinner('block');
 
     // Error Message for Empty
     if (searchText === '') {
@@ -46,6 +48,8 @@ const displaySearchResult = phones => {
             `;
             searchResult.appendChild(div);
         });
+        // Spinner Off
+        toggleSpinner('none');
     }
     
 }
@@ -89,6 +93,12 @@ const displayPhoneDetails = details =>{
     `;
     phoneDetails.appendChild(div);
 }
+
+// Spinner
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+}
+
 
 // Error
 const emptyError = document.getElementById('empty-error');
