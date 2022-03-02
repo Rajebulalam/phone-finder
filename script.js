@@ -21,7 +21,11 @@ const searchPhone = () => {
 // Display Phone 
 const displaySearchResult = phones => {
     const searchResult = document.getElementById('search-result');
+    // Clear Data
     searchResult.textContent = '';
+    const phoneDetails = document.getElementById('product-details');
+    // Clear Data
+    phoneDetails.textContent = '';
     emptyError.style.display = 'none';
     nullError.style.display = 'none'
     if(phones.length == 0 ){
