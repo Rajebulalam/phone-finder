@@ -7,7 +7,7 @@ const searchPhone = () => {
 
     // Error Message for Empty
     if (searchText === '') {
-        alert('Please!! Write Something to display');
+        emptyError.style.display = 'block';
     } else {
         // Load API Data
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
@@ -22,8 +22,10 @@ const searchPhone = () => {
 const displaySearchResult = phones => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    emptyError.style.display = 'none';
+    nullError.style.display = 'none'
     if(phones.length == 0 ){
-        alert('Sorry!! No Phone Found');
+        nullError.style.display = 'block'
     }else{
         phones.slice(0, 20).forEach(phone => {
             const div = document.createElement('div');
@@ -83,3 +85,9 @@ const displayPhoneDetails = details =>{
     `;
     phoneDetails.appendChild(div);
 }
+
+// Error
+const emptyError = document.getElementById('empty-error');
+emptyError.style.display = 'none';
+const nullError = document.getElementById('null-error');
+nullError.style.display = 'none'
